@@ -6,7 +6,7 @@ contract SimpleToken is ERC721Token {
     
     uint private nonce = 0;
     
-    constructor() ERC721("GameItem", "ITM") public { }
+    constructor() ERC721("SimpleToken", "SToken") public { }
 
     function random() public returns(uint) {
         nonce += 1;

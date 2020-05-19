@@ -861,35 +861,35 @@ pragma solidity ^0.4.24;
 
 contract SimpleToken is ERC721Token {
     
-    // uint private nonce = 0;
+    uint private nonce = 0;
     
-    // constructor() ERC721Token("GameItem", "ITM") public { }
+    constructor() ERC721Token("SimpleToken", "SToken") public { }
 
-    // function random() public returns(uint) {
-    //     nonce += 1;
-    //     return uint(keccak256(abi.encodePacked(nonce)));
-    // }
-
-    // function mint() public {
-    //     _mint(msg.sender, random());
-    // }
-    constructor() ERC721Token("Collectible", "COL") public {}
-
-    struct Color {
-        uint8 red;
-        uint8 green;
-        uint8 blue;
+    function random() public returns(uint) {
+        nonce += 1;
+        return uint(keccak256(abi.encodePacked(nonce)));
     }
-    
-    Color[] colors;
-    
+
     function mint() public {
-        Color memory _color = Color(uint8(now), uint8(now-1000), uint8(now-5500));
-        uint _id = colors.push(_color) - 1;
-        _mint(msg.sender, _id);
+        _mint(msg.sender, random());
     }
+    // constructor() ERC721Token("Collectible", "COL") public {}
+
+    // struct Color {
+    //     uint8 red;
+    //     uint8 green;
+    //     uint8 blue;
+    // }
     
-    function getColorFromId(uint id) public view returns(uint8, uint8, uint8) {
-        return (colors[id].red, colors[id].green, colors[id].blue);
-    }
+    // Color[] colors;
+    
+    // function mint() public {
+    //     Color memory _color = Color(uint8(now), uint8(now-1000), uint8(now-5500));
+    //     uint _id = colors.push(_color) - 1;
+    //     _mint(msg.sender, _id);
+    // }
+    
+    // function getColorFromId(uint id) public view returns(uint8, uint8, uint8) {
+    //     return (colors[id].red, colors[id].green, colors[id].blue);
+    // }
 }
