@@ -12,10 +12,10 @@ user = w3.eth.contract(
     abi=abi,
 )
 
-w3.eth.defaultAccount = w3.eth.accounts[1]
-user1 = w3.eth.accounts[1]
+w3.eth.defaultAccount = w3.eth.accounts[0]
+user1 = w3.eth.accounts[0]
 # geth.personal.unlock_account(user, "456", 300)
-w3.geth.personal.unlock_account(user1, "456")
+w3.geth.personal.unlock_account(user1, "123")
 
 tx_hash = user.functions.mint()
 tx_hash = tx_hash.transact()
